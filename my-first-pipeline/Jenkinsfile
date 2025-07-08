@@ -8,9 +8,5 @@ pipeline {
         sh 'node --version'
       }
     }
-    stages {
-    stage('deploy') {
-      steps {
-        sh 'node --version'
   }
 }

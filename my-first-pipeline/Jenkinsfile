@@ -1,11 +1,17 @@
 pipeline {
   agent {
-    docker { image 'node:17-alpine' }
+    docker {
+      image 'node:17-alpine'
+      args '-v $WORKSPACE:/usr/src/app -w /usr/src/app'
+    }
   }
   stages {
-    stage('Test') {
+    stage('Install & Run') {
       steps {
-        sh 'node --version'
+        sh '''
+          npm install
+          node index.js
+        '''
       }
     }
   }
